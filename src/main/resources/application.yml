@@ -1,0 +1,36 @@
+server:
+  port: 8084
+lingyue:
+#  env: debuger
+  env: release
+spring:
+  datasource:
+    url: jdbc:mysql://106.12.127.62:3306/botcore?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    driverClassName: com.mysql.jdbc.Driver
+    username: botCore
+    password: 7TeEbM4SEzTTHcC8
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 200MB
+  jpa:
+    database: mysql
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+      dialect: org.hibernate.dialect.MySQL5Dialect
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  main:
+    allow-bean-definition-overriding: true
+#mybatis:
+#  # 配置包别名
+#  typeAliasesPackage: cn.u313.app.entry
+#  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+#  mapperLocations: classpath*:mapper/*Mapper.xml
+#  configuration:
+#    # 下划线转驼峰命名法
+#    map-underscore-to-camel-case: true
+#    # 打印日志
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
