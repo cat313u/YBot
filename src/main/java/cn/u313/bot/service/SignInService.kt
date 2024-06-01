@@ -7,19 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class SignInService {
-    @Autowired
-    var userDataEntityRepository:UserDataEntityRepository? = null
-    private fun resiger(uid: Long): UserDataEntity? {
-        val apply = UserDataEntity().apply {
-            this.uid = uid
-        }
-        return userDataEntityRepository?.save(apply)
-    }
-    private fun saveUser(user:UserDataEntity?){
-        if (user == null) return
-        userDataEntityRepository?.save(user)
-    }
+class SignInService: BaseService() {
+
     fun from(uid: Long): String {
         var user = getUser(uid)
         if (user == null) return "未查询到您的用户信息\n请签到后再查询谢谢"
@@ -39,9 +28,5 @@ class SignInService {
         }
         saveUser(user)
         return "签到成功！\n获得 20 悦币"
-    }
-    fun getUser(uid: Long): UserDataEntity? {
-        val findByUid = userDataEntityRepository?.findByUid(uid) ?: return resiger(uid)
-        return findByUid
     }
 }
