@@ -22,8 +22,7 @@ class InMessageController {
      */
     @RequestMapping("/test")
     fun a(@RequestBody messageBody: NTMessage): String {
-        println(testService)
-        println(messageBody)
+        println(messageBody.message)
         messageBeanPostProcessor?.onMsg(messageBody)
         return "success"
     }

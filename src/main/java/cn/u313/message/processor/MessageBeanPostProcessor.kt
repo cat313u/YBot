@@ -16,6 +16,10 @@ import org.springframework.context.ApplicationContext
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
 import org.springframework.stereotype.Component
 import java.lang.reflect.Method
+
+/**
+ * 消息分发
+ */
 @Component
 class MessageBeanPostProcessor : BeanPostProcessor {
     @Autowired
@@ -38,8 +42,8 @@ class MessageBeanPostProcessor : BeanPostProcessor {
             for (method in methods) {
                 if (method.isAnnotationPresent(OnGroup::class.java)) {
                     val annotation = method.getAnnotation(OnGroup::class.java)
-                    val value: String = annotation.toString()
-                    println(("Invoking method: " + method.name) + " (" + value + ")")
+//                    val value: String = annotation.toString()
+//                    println(("Invoking method: " + method.name) + " (" + value + ")")
                     if (methodMap.contains("OnGroup").not()){
                         methodMap["OnGroup"] = mutableListOf(method)
                     }else{
@@ -47,8 +51,8 @@ class MessageBeanPostProcessor : BeanPostProcessor {
                     }
                 }else if(method.isAnnotationPresent(OnPrivate::class.java)){
                     val annotation = method.getAnnotation(OnPrivate::class.java)
-                    val value: String = annotation.toString()
-                    println(("Invoking method: " + method.name) + " (" + value + ")")
+//                    val value: String = annotation.toString()
+//                    println(("Invoking method: " + method.name) + " (" + value + ")")
                     if (methodMap.contains("OnPrivate").not()){
                         methodMap["OnPrivate"] = mutableListOf(method)
                     }else{

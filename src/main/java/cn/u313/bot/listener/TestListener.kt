@@ -1,6 +1,7 @@
 package cn.u313.bot.listener
 
 import cn.u313.bot.service.SignInService
+import cn.u313.bot.utils.getAtQQ
 import cn.u313.message.annotation.BotListener
 import cn.u313.message.annotation.Filter
 import cn.u313.message.annotation.OnGroup
@@ -29,7 +30,7 @@ class TestListener {
     @Filter(".*查询.*")
     @OnGroup
     fun from(groupMessage: GroupMessage){
-        messageEvent.sendMsg(groupMessage,signInService?.from(groupMessage.userId))
+        messageEvent.sendMsg(groupMessage,signInService?.from(getAtQQ(groupMessage.msg)?.toLong()?:groupMessage.userId))
     }
     @OnGroup
     @Filter(".*签到.*")

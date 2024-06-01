@@ -5,6 +5,6 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 @ComponentScan("cn.u313.message")
-open class BotConfig{
+class BotConfig{
     val signCoin = 20;
 }
